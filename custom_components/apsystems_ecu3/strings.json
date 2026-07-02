@@ -1,0 +1,42 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "APSystems ECU-3",
+        "description": "Configure your APSystems ECU-3 gateway.",
+        "data": {
+          "host": "ECU-3 IP address",
+          "scan_interval": "Polling interval (seconds)",
+          "inverter_model": "Micro-inverter model",
+          "custom_model": "Custom model name"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect to ECU-3",
+      "invalid_host": "Invalid IP address",
+      "invalid_ecu": "Unable to read ECU information",
+      "scan_interval_too_low": "Polling interval must be at least 60 seconds",
+      "custom_model_required": "Custom model name is required when 'Custom' is selected"
+    },
+    "abort": {
+      "already_configured": "This ECU-3 is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "APSystems ECU-3 Options",
+        "data": {
+          "scan_interval": "Polling interval (seconds)",
+          "inverter_model": "Micro-inverter model",
+          "custom_model": "Custom model name"
+        }
+      }
+    },
+    "error": {
+      "scan_interval_too_low": "Polling interval must be at least 60 seconds",
+      "custom_model_required": "Custom model name is required when 'Custom' is selected"
+    }
+  }
+}

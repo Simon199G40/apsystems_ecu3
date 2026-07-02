@@ -1,0 +1,19 @@
+{
+  "domain": "apsystems_ecu3",
+  "name": "APSystems ECU-3",
+  "version": "0.1.0",
+  "documentation": "https://github.com/Simon199G40/apsystems_ecu3",
+  "issue_tracker": "https://github.com/Simon199G40/apsystems_ecu3/issues",
+  "codeowners": [
+    "@Simon199G40"
+  ],
+  "config_flow": true,
+  "diagnostics": true,
+  "iot_class": "local_polling",
+  "integration_type": "device",
+  "requirements": [],
+  "dependencies": [],
+  "loggers": [
+    "custom_components.apsystems_ecu3"
+  ]
+}

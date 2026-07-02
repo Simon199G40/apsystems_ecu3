@@ -1,0 +1,42 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "APSystems ECU-3",
+        "description": "Configurez votre passerelle APSystems ECU-3.",
+        "data": {
+          "host": "Adresse IP de l'ECU-3",
+          "scan_interval": "Intervalle de scrutation (secondes)",
+          "inverter_model": "Modèle de micro-onduleur",
+          "custom_model": "Nom personnalisé du modèle"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de se connecter à l'ECU-3",
+      "invalid_host": "Adresse IP invalide",
+      "scan_interval_too_low": "L'intervalle doit être d'au moins 60 secondes",
+	  "invalid_ecu": "Impossible de lire les informations de l'ECU",
+      "custom_model_required": "Le nom du modèle personnalisé est requis lorsque 'Custom' est sélectionné"
+    },
+    "abort": {
+      "already_configured": "Cet ECU-3 est déjà configuré"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options APSystems ECU-3",
+        "data": {
+          "scan_interval": "Intervalle de scrutation (secondes)",
+          "inverter_model": "Modèle de micro-onduleur",
+          "custom_model": "Nom personnalisé du modèle"
+        }
+      }
+    },
+    "error": {
+      "scan_interval_too_low": "L'intervalle doit être d'au moins 60 secondes",
+      "custom_model_required": "Le nom du modèle personnalisé est requis lorsque 'Custom' est sélectionné"
+    }
+  }
+}
