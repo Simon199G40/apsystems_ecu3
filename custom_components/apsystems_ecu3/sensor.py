@@ -194,6 +194,7 @@ class ECU3HomeSensor(
     """ECU-level sensor."""
 
     entity_description: ECU3SensorDescription
+    _attr_has_entity_name = True
 
     def __init__(
         self,
@@ -209,8 +210,6 @@ class ECU3HomeSensor(
         self.entity_description = (
             description
         )
-
-        self._attr_has_entity_name = True
 
         self._attr_unique_id = (
             f"{ecu_id}_{description.key}"
@@ -253,6 +252,8 @@ class InverterChannelSensor(
 ):
     """Micro-inverter channel sensor."""
 
+    _attr_has_entity_name = True
+
     def __init__(
         self,
         coordinator,
@@ -275,8 +276,6 @@ class InverterChannelSensor(
         self._attr_unique_id = (
             f"{inverter_serial}_{channel}_{metric}"
         )
-
-        self._attr_has_entity_name = True
 
         self._attr_translation_key = metric
 
@@ -329,9 +328,6 @@ class InverterChannelSensor(
         elif metric == "frequency":
             self._attr_native_unit_of_measurement = (
                 UnitOfFrequency.HERTZ
-            )
-            self._attr_device_class = (
-                SensorDeviceClass.FREQUENCY
             )
             self._attr_state_class = (
                 SensorStateClass.MEASUREMENT

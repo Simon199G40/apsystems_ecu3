@@ -42,28 +42,28 @@
   "entity": {
     "sensor": {
       "lifetime_generation": {
-        "name": "Lifetime energy"
+        "name": "Lifetime generation"
       },
       "today_generation": {
-        "name": "Today's energy"
+        "name": "Today's generation"
       },
       "system_power": {
         "name": "System power"
       },
       "inverters_online": {
-        "name": "Inverters online"
+        "name": "Micro-inverters online"
       },
       "power": {
-        "name": "Power channel {channel}"
+        "name": "Channel {channel} power"
       },
       "voltage": {
-        "name": "Voltage channel {channel}"
+        "name": "Channel {channel} voltage"
       },
       "frequency": {
-        "name": "Frequency channel {channel}"
+        "name": "Channel {channel} frequency"
       },
       "temperature": {
-        "name": "Temperature channel {channel}"
+        "name": "Channel {channel} temperature"
       }
     }
   }

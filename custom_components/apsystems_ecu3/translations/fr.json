@@ -42,28 +42,28 @@
   "entity": {
     "sensor": {
       "lifetime_generation": {
-        "name": "Énergie totale produite"
+        "name": "Production totale"
       },
       "today_generation": {
-        "name": "Énergie produite aujourd'hui"
+        "name": "Production du jour"
       },
       "system_power": {
-        "name": "Puissance système"
+        "name": "Puissance du système"
       },
       "inverters_online": {
-        "name": "Onduleurs en ligne"
+        "name": "Micro-onduleurs en ligne"
       },
       "power": {
-        "name": "Puissance canal {channel}"
+        "name": "Puissance channel {channel}"
       },
       "voltage": {
-        "name": "Tension canal {channel}"
+        "name": "Tension channel {channel}"
       },
       "frequency": {
-        "name": "Fréquence canal {channel}"
+        "name": "Fréquence channel {channel}"
       },
       "temperature": {
-        "name": "Température canal {channel}"
+        "name": "Température channel {channel}"
       }
     }
   }
