@@ -38,5 +38,33 @@
       "scan_interval_too_low": "Polling interval must be at least 60 seconds",
       "custom_model_required": "Custom model name is required when 'Custom' is selected"
     }
+  },
+  "entity": {
+    "sensor": {
+      "lifetime_generation": {
+        "name": "Lifetime energy"
+      },
+      "today_generation": {
+        "name": "Today's energy"
+      },
+      "system_power": {
+        "name": "System power"
+      },
+      "inverters_online": {
+        "name": "Inverters online"
+      },
+      "power": {
+        "name": "Power channel {channel}"
+      },
+      "voltage": {
+        "name": "Voltage channel {channel}"
+      },
+      "frequency": {
+        "name": "Frequency channel {channel}"
+      },
+      "temperature": {
+        "name": "Temperature channel {channel}"
+      }
+    }
   }
 }

@@ -210,6 +210,8 @@ class ECU3HomeSensor(
             description
         )
 
+        self._attr_has_entity_name = True
+
         self._attr_unique_id = (
             f"{ecu_id}_{description.key}"
         )
@@ -274,9 +276,13 @@ class InverterChannelSensor(
             f"{inverter_serial}_{channel}_{metric}"
         )
 
-        self._attr_translation_key = (
-            f"{metric}_{channel.lower()}"
-        )
+        self._attr_has_entity_name = True
+
+        self._attr_translation_key = metric
+
+        self._attr_translation_placeholders = {
+            "channel": channel,
+        }
 
         self._attr_device_info = DeviceInfo(
             identifiers={
