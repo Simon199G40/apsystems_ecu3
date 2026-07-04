@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from homeassistant.components.sensor import (
+    DOMAIN as SENSOR_DOMAIN,
     SensorDeviceClass,
     SensorEntity,
     SensorEntityDescription,
@@ -215,6 +216,11 @@ class ECU3HomeSensor(
             f"{ecu_id}_{description.key}"
         )
 
+        self.entity_id = (
+            f"{SENSOR_DOMAIN}."
+            f"{DOMAIN}_{ecu_id}_{description.key}"
+        )
+
         self._attr_device_info = DeviceInfo(
             identifiers={
                 (
@@ -244,12 +250,6 @@ class ECU3HomeSensor(
         ].get(
             self.entity_description.value_key,
         )
-
-    @property
-    def suggested_object_id(self) -> str | None:
-        """Return a stable object id, independent of translation loading."""
-
-        return self.entity_description.key
 
 
 class InverterChannelSensor(
@@ -281,6 +281,11 @@ class InverterChannelSensor(
 
         self._attr_unique_id = (
             f"{inverter_serial}_{channel}_{metric}"
+        )
+
+        self.entity_id = (
+            f"{SENSOR_DOMAIN}."
+            f"{inverter_serial}_{metric}_{channel.lower()}"
         )
 
         self._attr_translation_key = metric
@@ -372,9 +377,3 @@ class InverterChannelSensor(
                 self._metric,
             )
         )
-
-    @property
-    def suggested_object_id(self) -> str | None:
-        """Return a stable object id, independent of translation loading."""
-
-        return f"{self._metric}_{self._channel.lower()}"
