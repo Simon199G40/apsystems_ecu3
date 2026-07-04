@@ -245,6 +245,12 @@ class ECU3HomeSensor(
             self.entity_description.value_key,
         )
 
+    @property
+    def suggested_object_id(self) -> str | None:
+        """Return a stable object id, independent of translation loading."""
+
+        return self.entity_description.key
+
 
 class InverterChannelSensor(
     CoordinatorEntity,
@@ -366,3 +372,9 @@ class InverterChannelSensor(
                 self._metric,
             )
         )
+
+    @property
+    def suggested_object_id(self) -> str | None:
+        """Return a stable object id, independent of translation loading."""
+
+        return f"{self._metric}_{self._channel.lower()}"
