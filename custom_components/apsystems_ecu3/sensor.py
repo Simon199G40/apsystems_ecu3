@@ -21,6 +21,7 @@ from homeassistant.const import (
 )
 
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import (
@@ -39,6 +40,39 @@ from .const import (
 )
 
 from .coordinator import APSystemsECU3Coordinator
+
+
+def _async_force_object_id(
+    entity: SensorEntity,
+    object_id: str,
+) -> None:
+    """Force this entity's entity_id via the entity registry.
+
+    Home Assistant does not always honour a translation-derived or
+    manually assigned entity_id for entities using has_entity_name.
+    This explicitly renames the entity through the registry, the
+    same mechanism used by the "reset to default ID" button in the UI.
+    """
+
+    desired_entity_id = f"{SENSOR_DOMAIN}.{object_id}"
+
+    if entity.entity_id == desired_entity_id:
+        return
+
+    registry = er.async_get(
+        entity.hass,
+    )
+
+    if registry.async_get(
+        desired_entity_id,
+    ) is not None:
+        # Target ID already taken by another entity, don't clash.
+        return
+
+    registry.async_update_entity(
+        entity.entity_id,
+        new_entity_id=desired_entity_id,
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -216,8 +250,7 @@ class ECU3HomeSensor(
             f"{ecu_id}_{description.key}"
         )
 
-        self.entity_id = (
-            f"{SENSOR_DOMAIN}."
+        self._object_id = (
             f"{DOMAIN}_{ecu_id}_{description.key}"
         )
 
@@ -237,6 +270,18 @@ class ECU3HomeSensor(
                 "software_version",
             ),
             name=f"APSystems ECU-3 {ecu_id}",
+        )
+
+    async def async_added_to_hass(
+        self,
+    ) -> None:
+        """Run when entity about to be added to hass."""
+
+        await super().async_added_to_hass()
+
+        _async_force_object_id(
+            self,
+            self._object_id,
         )
 
     @property
@@ -283,8 +328,7 @@ class InverterChannelSensor(
             f"{inverter_serial}_{channel}_{metric}"
         )
 
-        self.entity_id = (
-            f"{SENSOR_DOMAIN}."
+        self._object_id = (
             f"{inverter_serial}_{metric}_{channel.lower()}"
         )
 
@@ -376,4 +420,16 @@ class InverterChannelSensor(
             .get(
                 self._metric,
             )
+        )
+
+    async def async_added_to_hass(
+        self,
+    ) -> None:
+        """Run when entity about to be added to hass."""
+
+        await super().async_added_to_hass()
+
+        _async_force_object_id(
+            self,
+            self._object_id,
         )

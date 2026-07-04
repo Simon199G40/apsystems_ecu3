@@ -1,7 +1,7 @@
 {
   "domain": "apsystems_ecu3",
   "name": "APSystems ECU-3",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "documentation": "https://github.com/Simon199G40/apsystems_ecu3",
   "issue_tracker": "https://github.com/Simon199G40/apsystems_ecu3/issues",
   "codeowners": [
