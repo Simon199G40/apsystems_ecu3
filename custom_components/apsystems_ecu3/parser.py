@@ -16,6 +16,7 @@ def _safe_float(value: str) -> float:
             value.replace(",", ".")
             .replace("kWh", "")
             .replace("Wh", "")
+            .replace("Hz", "")
             .replace("W", "")
             .strip()
         )
